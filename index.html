@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartografía Social de Fusagasugá - ODS 6</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #005082;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .marker:hover {
+            transform: scale(1.5);
+        }
+        
+        .marker.water-supply {
+            background-color: #3498db;
+            border: 2px solid #2980b9;
+        }
+        
+        .marker.contamination {
+            background-color: #e74c3c;
+            border: 2px solid #c0392b;
+        }
+        
+        .marker.community {
+            background-color: #2ecc71;
+            border: 2px solid #27ae60;
+        }
+        
+        .marker.government {
+            background-color: #f39c12;
+            border: 2px solid #d35400;
+        }
+        
+        .info-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .values-section {
+            background-color: #e1f5fe;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .values-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .values-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .values-list li:before {
+            content: "•";
+            color: #007bff;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #005082;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Cartografía Social de Fusagasugá</h1>
+            <p>ODS 6: Agua Limpia y Saneamiento</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2>Problema Identificado</h2>
+            <div class="info-box">
+                <p><strong>Problema:</strong> Contaminación del río Cuja y sus afluentes, que afecta el suministro de agua potable y el ecosistema de varias comunidades en Fusagasugá.</p>
+                <p><strong>Contexto:</strong> El río Cuja es uno de los principales cuerpos de agua que atraviesa el municipio de Fusagasugá (Cundinamarca, Colombia), siendo esencial para el suministro de agua, la agricultura y la biodiversidad local. Sin embargo, enfrenta graves problemas de contaminación por vertimientos de aguas residuales domésticas e industriales, además de la disposición inadecuada de residuos sólidos.</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Cartografía del Problema</h2>
+            <div class="map-container">
+                <!-- Mapa de Fusagasugá -->
+                <svg class="map-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Contorno de Fusagasugá (simplificado y mejorado) -->
+                    <path d="M200,100 C250,80 300,70 350,75 C400,80 450,100 500,130 C550,160 600,200 650,250 C700,300 720,350 730,400 C740,450 730,500 700,540 C670,580 620,590 550,580 C480,570 400,550 320,520 C240,490 180,450 150,400 C120,350 130,300 150,250 C170,200 180,120 200,100 Z" fill="#e6ffe6" stroke="#333" stroke-width="2" />
+
+                    <!-- Río Cuja (línea principal mejorada) -->
+                    <path d="M150,300 C200,280 250,250 300,240 C350,230 400,240 450,260 C500,280 550,310 600,350 C650,390 680,420 700,450" fill="none" stroke="#3498db" stroke-width="5" />
+                    
+                    <!-- Afluentes del río (mejorados) -->
+                    <path d="M200,200 C220,220 240,230 250,250 C260,270 290,250 300,240" fill="none" stroke="#3498db" stroke-width="3" />
+                    <path d="M350,150 C370,180 390,210 400,240" fill="none" stroke="#3498db" stroke-width="3" />
+                    <path d="M500,200 C520,230 540,270 550,310" fill="none" stroke="#3498db" stroke-width="3" />
+                    
+                    <!-- Centro urbano -->
+                    <circle cx="400" cy="300" r="30" fill="#ffcc99" stroke="#996633" stroke-width="2" />
+                    <text x="400" y="305" text-anchor="middle" font-size="12" font-weight="bold">Centro urbano</text>
+                    
+                    <!-- Puntos de contaminación -->
+                    <circle cx="300" cy="240" r="10" fill="#e74c3c" stroke="#c0392b" stroke-width="2">
+                        <title>Vertimiento de aguas residuales industriales</title>
+                    </circle>
+                    <circle cx="450" cy="260" r="10" fill="#e74c3c" stroke="#c0392b" stroke-width="2">
+                        <title>Vertimiento de aguas residuales domésticas</title>
+                    </circle>
+                    <circle cx="550" cy="310" r="10" fill="#e74c3c" stroke="#c0392b" stroke-width="2">
+                        <title>Punto de acumulación de residuos sólidos</title>
+                    </circle>
+                    
+                    <!-- Comunidades afectadas -->
+                    <circle cx="250" cy="200" r="8" fill="#2ecc71" stroke="#27ae60" stroke-width="2">
+                        <title>Comunidad rural La Aguadita</title>
+                    </circle>
+                    <circle cx="350" cy="350" r="8" fill="#2ecc71" stroke="#27ae60" stroke-width="2">
+                        <title>Barrio San Antonio</title>
+                    </circle>
+                    <circle cx="500" cy="400" r="8" fill="#2ecc71" stroke="#27ae60" stroke-width="2">
+                        <title>Vereda El Resguardo</title>
+                    </circle>
+                    
+                    <!-- Actores institucionales -->
+                    <rect x="370" y="250" width="15" height="15" fill="#f39c12" stroke="#d35400" stroke-width="2">
+                        <title>Alcaldía Municipal</title>
+                    </rect>
+                    <rect x="430" y="270" width="15" height="15" fill="#f39c12" stroke="#d35400" stroke-width="2">
+                        <title>EMSERFUSA (Empresa de Servicios Públicos)</title>
+                    </rect>
+                    <rect x="460" y="320" width="15" height="15" fill="#f39c12" stroke="#d35400" stroke-width="2">
+                        <title>CAR Cundinamarca</title>
+                    </rect>
+                    
+                    <!-- Vías principales -->
+                    <path d="M250,300 C300,290 350,290 400,300 C450,310 500,330 550,350" fill="none" stroke="#777" stroke-width="3" stroke-dasharray="5,3" />
+                    <path d="M400,200 C400,250 400,300 400,400" fill="none" stroke="#777" stroke-width="3" stroke-dasharray="5,3" />
+                    
+                    <!-- Etiquetas de lugares -->
+                    <text x="250" y="190" text-anchor="middle" font-size="10">La Aguadita</text>
+                    <text x="350" y="365" text-anchor="middle" font-size="10">San Antonio</text>
+                    <text x="500" y="415" text-anchor="middle" font-size="10">El Resguardo</text>
+                    
+                    <!-- Áreas de riesgo -->
+                    <path d="M290,230 C300,220 310,220 320,230 C330,240 330,250 320,260 C310,270 300,270 290,260 C280,250 280,240 290,230 Z" fill="rgba(255,0,0,0.2)" stroke="red" stroke-width="1" />
+                    <path d="M440,250 C450,240 460,240 470,250 C480,260 480,270 470,280 C460,290 450,290 440,280 C430,270 430,260 440,250 Z" fill="rgba(255,0,0,0.2)" stroke="red" stroke-width="1" />
+                    <path d="M540,300 C550,290 560,290 570,300 C580,310 580,320 570,330 C560,340 550,340 540,330 C530,320 530,310 540,300 Z" fill="rgba(255,0,0,0.2)" stroke="red" stroke-width="1" />
+                </svg>
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #3498db;"></div>
+                    <span>Ríos y afluentes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #e74c3c;"></div>
+                    <span>Puntos de contaminación</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #2ecc71;"></div>
+                    <span>Comunidades afectadas</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #f39c12;"></div>
+                    <span>Actores institucionales</span>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Actores Involucrados</h2>
+            <div class="info-box">
+                <h3>Actores Comunitarios:</h3>
+                <ul>
+                    <li><strong>Juntas de Acción Comunal</strong> de los barrios afectados por la contaminación del río.</li>
+                    <li><strong>Asociaciones de agricultores</strong> que utilizan el agua para riego.</li>
+                    <li><strong>Habitantes</strong> de las comunidades rurales y urbanas aledañas al río.</li>
+                </ul>
+                
+                <h3>Actores Institucionales:</h3>
+                <ul>
+                    <li><strong>Alcaldía Municipal de Fusagasugá</strong>: Responsable de la gestión ambiental local.</li>
+                    <li><strong>EMSERFUSA</strong>: Empresa de Servicios Públicos encargada del suministro de agua potable y tratamiento de aguas residuales.</li>
+                    <li><strong>CAR Cundinamarca</strong>: Corporación Autónoma Regional con autoridad ambiental en la región.</li>
+                    <li><strong>Universidad de Cundinamarca</strong>: Para estudios ambientales y propuestas de solución.</li>
+                </ul>
+                
+                <h3>Actores Económicos:</h3>
+                <ul>
+                    <li><strong>Industrias locales</strong> que generan vertimientos al río.</li>
+                    <li><strong>Sector agrícola</strong> que utiliza fertilizantes y plaguicidas que pueden llegar al río.</li>
+                    <li><strong>Empresas de turismo</strong> afectadas por la deterioración del paisaje y la calidad del agua.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Valores Éticos para la Solución</h2>
+            <div class="info-box values-section">
+                <ul class="values-list">
+                    <li><strong>Responsabilidad ambiental</strong>: Reconocer nuestro impacto en el medio ambiente y actuar para minimizarlo.</li>
+                    <li><strong>Solidaridad intergeneracional</strong>: Preservar los recursos hídricos para las generaciones futuras.</li>
+                    <li><strong>Justicia ambiental</strong>: Garantizar que todos los ciudadanos tengan acceso equitativo a agua limpia sin importar su condición socioeconómica.</li>
+                    <li><strong>Transparencia</strong>: En los procesos de gestión del agua y en la información sobre su calidad.</li>
+                    <li><strong>Participación ciudadana</strong>: Involucrar a la comunidad en las decisiones sobre los recursos hídricos locales.</li>
+                    <li><strong>Sostenibilidad</strong>: Equilibrar las necesidades actuales con la preservación del ecosistema acuático.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Cartografía Social de Fusagasugá - ODS 6: Agua Limpia y Saneamiento</p>
+        </div>
+    </footer>
+</body>
+</html>
